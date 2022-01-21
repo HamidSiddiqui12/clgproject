@@ -7,7 +7,7 @@ int book_count = 0;
 
 struct libMang
 {
-    int UniqueBookId[5];
+    int UniqueBookId;
     char BookName[20];
     char AuthorName[20];
 };
@@ -46,24 +46,12 @@ void welcome()
     }
 }
 
-void show()
-{
-    struct libMang book[10];
-
-    for (int i = 0; i < book_count; i++)
-    {
-        printf("Unique Book Id: %2s\n", book[i].UniqueBookId);
-        printf("Book Name: %2s\n", book[i].BookName);
-        printf("Author Name: %2s\n", book[i].AuthorName);
-    }
-}
-
 int main()
 {
     struct libMang book[10];
 
     int pass;
-    int a, i, j, ir;
+    int a, i, j = 0, ir;
     char ar_nm[20], bk_nm[20], issuePer[20];
 
     printf("\n");
@@ -98,10 +86,10 @@ int main()
             // ADD book
             case 1:
 
-                printf("Enter how many books you want to add: -");
+                printf("Enter how many books you want to add: - ");
                 scanf("%d", &j);
 
-                for (int k = 0; k < j; k++)
+                for (i = 0; i < j; i++)
                 {
                     printf("Enter the UniqueBookId: ");
                     scanf("%d", &book[i].UniqueBookId);
@@ -111,15 +99,22 @@ int main()
 
                     printf("Enter the author name: ");
                     scanf("%s", &book[i].AuthorName);
-                }
 
-                book_count++;
+                    book_count++;
+                }
 
                 break;
 
             // SHOW all book
             case 2:
-                show();
+
+                for (i = 0; i < a; i++)
+                {
+                    printf("Unique Book Id: %d\n", book[i].UniqueBookId);
+                    printf("Book Name: %s\n", book[i].BookName);
+                    printf("Author Name: %s\n", book[i].AuthorName);
+                }
+
                 break;
 
             // FIND book
